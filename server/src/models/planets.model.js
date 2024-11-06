@@ -1,8 +1,6 @@
 const planets = [];
 const path = require("path");
 
-module.exports = planets;
-
 const { parse } = require("csv-parse");
 const fs = require("fs");
 
