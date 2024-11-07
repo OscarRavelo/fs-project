@@ -1,11 +1,13 @@
 const launches = new Map();
 
+let latestFlighNumber = 1;
+
 const launch = {
   flightNumber: 1,
   mission: "kepler",
   rocket: "Falcon 9",
   launchDate: new Date("December 5, 2021"),
-  destination: "Kepler-186 f",
+  target: "Kepler-186 f",
   customer: ["NASA"],
   upcoming: true,
   success: true,
@@ -13,6 +15,20 @@ const launch = {
 
 launches.set(launch.flightNumber, launch);
 
+function addNewLaunch(launch) {
+  latestFlighNumber++;
+  launches.set(
+    launch.flightNumber,
+    Object.assign(launch, {
+      customer: ["NASA"],
+      upcoming: true,
+      upcoming: true,
+      flightNumber: latestFlighNumber,
+    }),
+  );
+}
+
 module.exports = {
   launches,
+  addNewLaunch,
 };

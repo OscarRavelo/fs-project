@@ -10,6 +10,6 @@ app.use(morgan("combined"));
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(planetsRouter);
-app.use(launchesRouter);
+app.use("/launches", launchesRouter);
 
 module.exports = app;
