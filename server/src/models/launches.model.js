@@ -18,7 +18,7 @@ launches.set(launch.flightNumber, launch);
 function addNewLaunch(launch) {
   latestFlighNumber++;
   launches.set(
-    launch.flightNumber,
+    latestFlighNumber,
     Object.assign(launch, {
       customer: ["NASA"],
       upcoming: true,
@@ -28,7 +28,25 @@ function addNewLaunch(launch) {
   );
 }
 
+function abortLaunchById(launchId) {
+  const aborted = launches.get(launchId);
+  aborted.upcoming = false;
+  aborted.success = false;
+  return aborted;
+}
+
+function existsLaunchWithId(launchId) {
+  console.log(launches);
+  return launches.has(launchId);
+}
+
+function getAllLaunches() {
+  return Array.from(launches.values());
+}
+
 module.exports = {
-  launches,
+  getAllLaunches,
   addNewLaunch,
+  existsLaunchWithId,
+  abortLaunchById,
 };
